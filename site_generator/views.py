@@ -23,7 +23,7 @@ def list_site_pages(request):
         # return 404 if not found
 
     default_project = TemplateGenerator.objects.first()
-    return render(request, "shop/project.html", {"project": default_project})
+    return render(request, "shop/projects.html", {"project": default_project})
 
 def preview_site_page(request):
     # search site by slug

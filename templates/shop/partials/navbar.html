@@ -1,9 +1,9 @@
 {% load static %}
 
 {% url 'home' as home_path %}
-{% url 'account_login' as login_path %}
-{% url 'account_signup' as register_path %}
-{% comment %} {% url 'custom_auth:dashboard' as profile_path %} {% endcomment %}
+{% url 'custom_auth:login' as login_path %}
+{% url 'custom_auth:register' as register_path %}
+{% url 'custom_auth:dashboard' as profile_path %}
 
 <script>
   /* script para abrir y cerrar el popover de la cuenta del usuario */
@@ -55,7 +55,7 @@
                 aria-current="page">Inicio</a>
 
             {% if request.user.is_authenticated %}
-            {% comment %} <a href="{{profile_path}}" class="text-white rounded-md {% if request.path == profile_path %}bg-cyan-900 {% else %}hover:bg-cyan-700 {% endif %} px-3 py-2 text-sm font-medium">Perfil</a> {% endcomment %}
+            <a href="{{profile_path}}" class="text-white rounded-md {% if request.path == profile_path %}bg-cyan-900 {% else %}hover:bg-cyan-700 {% endif %} px-3 py-2 text-sm font-medium">Perfil</a>
             {% else %}
             <a href="{{login_path}}" class="text-white rounded-md {% if request.path == login_path %}bg-cyan-900 {% else %}hover:bg-cyan-700 {% endif %} px-3 py-2 text-sm font-medium">Iniciar Sesion</a>
             <a href="{{register_path}}" class="text-white rounded-md {% if request.path == register_path %}bg-cyan-900 {% else %}hover:bg-cyan-700 {% endif %} px-3 py-2 text-sm font-medium">Crear Cuenta</a>
