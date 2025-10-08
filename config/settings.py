@@ -185,3 +185,5 @@ if USE_EMAIL:
 
     SERVER_EMAIL =  environ.get('EMAIL_OWNER')  # Correo que aparecerá como remitente
     ADMINS = [('Admin',  environ.get('EMAIL_OWNER'))]  # Correo al que se enviarán los errores
+
+X_FRAME_OPTIONS = "SAMEORIGIN"

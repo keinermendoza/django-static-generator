@@ -11,9 +11,11 @@ class TemplateGenerator(models.Model):
     css_files = models.JSONField(default=list)
     js_files = models.JSONField(default=list)
 
+    def get_template_path(self, template_name):
+        return settings.BASE_DIR / "templates" / "generator" / self.project_name  / template_name 
+
     def get_template_string(self, template_name, context={}):
-        template_path = settings.BASE_DIR / "templates" / "generator" / self.project_name  / template_name 
-        return render_to_string(template_path, context)
+        return render_to_string(self.get_template_path(template_name), context)
     
     def get_css_path(self, filename):
         return settings.BASE_DIR / "static" / "generator" / self.project_name  / "css" / filename 
