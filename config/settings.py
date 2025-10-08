@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'core',
-    'mywidgets'
+    'mywidgets',
+    'site_generator'
 ]
 
 MIDDLEWARE = [
