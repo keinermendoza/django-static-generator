@@ -22,7 +22,9 @@ def preview_site_page(request, project_slug):
     project = get_object_or_404(TemplateGenerator, slug=project_slug)
     filename = request.GET.get("page-filename")
     context = {
-        "title" : request.GET.get("title")
+        "title" : request.GET.get("title"),
+        "demo_mode": True,
+        "project": project
     }
     
     if filename in project.template_names:

@@ -6,6 +6,7 @@ from django.template.loader import render_to_string
 from django.contrib.staticfiles import finders
 from django.core.files.storage import default_storage
 from django.urls import reverse
+
 class TemplateGenerator(models.Model):
     project_name = models.CharField(max_length=80)
     template_names = models.JSONField(default=list)
@@ -30,7 +31,10 @@ class TemplateGenerator(models.Model):
     def get_js_path(self, filename):
         return settings.BASE_DIR / "static" / "generator" / self.project_name  / "js" / filename
 
-    def generate_zip_buffer(self, context={}):
+    def generate_zip_buffer(self, context=None):
+        if context is None:
+            context = {"project":self}
+        
         zip_buffer = BytesIO()
 
         with zipfile.ZipFile(zip_buffer, 'w', zipfile.ZIP_DEFLATED) as zip:

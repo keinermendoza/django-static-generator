@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'core',
     'mywidgets',
+    'mytemplatetags',
     'site_generator',
     'shop',
 ]
