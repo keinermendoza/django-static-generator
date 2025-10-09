@@ -58,8 +58,8 @@ class TemplateGenerator(models.Model):
     def __str__(self):
         return self.project_name
     
-    # def get_absolute_url(self):
-    #     return 
+    def get_absolute_url(self):
+        return reverse('projects', args=[self.slug])
     
     @property
     def image(self):

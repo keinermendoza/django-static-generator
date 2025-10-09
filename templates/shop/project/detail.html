@@ -1,0 +1,14 @@
+{% extends "shop/base.html" %}
+
+{% block content %}
+<h1>You have chosen this site for preview</h1>
+    {% for template in project.template_names %}
+    
+    <iframe 
+        src="{% url 'preview' project.slug %}?page-filename={{template}}" 
+        width="100%"
+        height="400"
+        style="border: 1px solid #ccc;"
+        frameborder="0"></iframe>
+    {% endfor %}
+{% endblock content %}

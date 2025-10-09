@@ -1,40 +1,30 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from .models import TemplateGenerator 
 
-
-def free_view(request):
-    # search site by slug
-        # return 404 if not found
-
-    default_project = TemplateGenerator.objects.first()
+def free_view(request, project_slug):
+    project = get_object_or_404(TemplateGenerator, slug=project_slug)
     
     # get buffer zip buffer
-    zip_buffer = default_project.generate_zip_buffer()
+    zip_buffer = project.generate_zip_buffer()
 
     # return attached zip file
     response = HttpResponse(zip_buffer.getvalue(), content_type="application/zip")    
     response['Content-Disposition'] = 'attachment; filename="template_site.zip"'
     return response
 
-def list_site_pages(request):
-    # search site by slug
-        # return 404 if not found
+def list_site_pages(request, project_slug):
+    project = get_object_or_404(TemplateGenerator, slug=project_slug)
+    return render(request, "shop/project/detail.html", {"project": project})
 
-    default_project = TemplateGenerator.objects.first()
-    return render(request, "shop/projects.html", {"project": default_project})
-
-def preview_site_page(request):
-    # search site by slug
-        # return 404 if not found
-
-    default_project = TemplateGenerator.objects.first()
+def preview_site_page(request, project_slug):
+    project = get_object_or_404(TemplateGenerator, slug=project_slug)
     filename = request.GET.get("page-filename")
     context = {
         "title" : request.GET.get("title")
     }
     
-    if filename in default_project.template_names:
-        return render(request, default_project.get_template_path(filename), context) 
+    if filename in project.template_names:
+        return render(request, project.get_template_path(filename), context) 
     return HttpResponse(404)
