@@ -1,7 +1,6 @@
-{% url 'audios:inicio' as home_path %}
-{% url 'custom_auth:login' as login_path %}
-{% url 'custom_auth:register' as register_path %}
-{% url 'custom_auth:dashboard' as profile_path %}
+{% url 'home' as home_path %}
+{% url 'account_login' as login_path %}
+{% url 'account_signup' as register_path %}
 
 <div class="md:hidden  fixed z-20 bottom-0 left-0 w-full border-t bg-purple-800 shadow text-white ">
     <nav >
@@ -17,7 +16,7 @@
             </li>
        
             {% if request.user.is_authenticated %}
-            <li class="flex-grow transition-colors bg-transparent hover:bg-white/10 ">
+            {% comment %} <li class="flex-grow transition-colors bg-transparent hover:bg-white/10 ">
                 <a class="flex flex-col items-center py-2 text-gray-500 {% if request.path == profile_path %}text-white{% endif %} " 
                     href="{{profile_path}}">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -25,7 +24,7 @@
                     </svg>
                     <span class="text-sm">Perfil</span>
                 </a>
-            </li>
+            </li> {% endcomment %}
             {% else %}
             <li class="flex-grow transition-colors bg-transparent hover:bg-white/10">
                 <a class="flex flex-col items-center py-2 text-gray-500 {% if request.path == register_path  %}text-white{% endif %} " 

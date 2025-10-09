@@ -3,7 +3,6 @@
 {% url 'home' as home_path %}
 {% url 'account_login' as login_path %}
 {% url 'account_signup' as register_path %}
-{% comment %} {% url 'custom_auth:dashboard' as profile_path %} {% endcomment %}
 
 <script>
   /* script para abrir y cerrar el popover de la cuenta del usuario */
@@ -87,14 +86,7 @@
               From: "transform opacity-100 scale-100"
               To: "transform opacity-0 scale-95"
           -->
-          <div id="user-menu" class="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-hidden" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-            <!-- Active: "bg-gray-100 outline-hidden", Not Active: "" -->
-            <a href="{{profile_path}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-black/10 " role="menuitem" tabindex="-1" id="user-menu-item-0">Ver Perfil</a>
-            <form action="{% url 'custom_auth:logout' %}" method="post" class="block text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">
-              {% csrf_token %}
-              <button class="w-full px-4 py-2 text-start cursor-pointer hover:bg-black/10 ">Salir</button>
-            </form>
-          </div>
+          
         </div>
       </div>
       {% endif %}
