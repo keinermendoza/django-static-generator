@@ -4,12 +4,19 @@ from io import BytesIO
 import zipfile
 from django.template.loader import render_to_string
 from django.contrib.staticfiles import finders
-
+from django.core.files.storage import default_storage
+from django.urls import reverse
 class TemplateGenerator(models.Model):
     project_name = models.CharField(max_length=80)
     template_names = models.JSONField(default=list)
     css_files = models.JSONField(default=list)
     js_files = models.JSONField(default=list)
+
+    preview_image = models.ImageField(upload_to='projects/preview', blank=True)
+    description = models.TextField(blank=True)
+    slug = models.SlugField(max_length=80, unique=True)
+
+    PATH_TO_DEFAULT_IMAGE = "projects/preview/default.png"
 
     def get_template_path(self, template_name):
         return settings.BASE_DIR / "templates" / "generator" / self.project_name  / template_name 
@@ -50,3 +57,12 @@ class TemplateGenerator(models.Model):
     
     def __str__(self):
         return self.project_name
+    
+    # def get_absolute_url(self):
+    #     return 
+    
+    @property
+    def image(self):
+        if self.preview_image:
+            return self.preview_image.url
+        return default_storage.url(self.PATH_TO_DEFAULT_IMAGE)
