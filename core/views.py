@@ -6,5 +6,10 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def profile_show(request):
-    template_name = "core/profile.html"
+    template_name = "core/profile/show.html"
+    return render(request, template_name)
+
+@login_required
+def profile_edit(request):
+    template_name = "core/profile/edit.html"
     return render(request, template_name)

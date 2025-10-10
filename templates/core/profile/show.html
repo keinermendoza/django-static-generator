@@ -1,0 +1,71 @@
+{% extends "shop/base.html" %}
+{% load static  %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'core/css/profile.css' %}">
+{% endblock styles %}
+
+{% block content %}
+<div class="profile-hero" style="background-image:url({% static 'core/images/ballons.jpg' %});">
+    <div class="profile-banner"> 
+        <div class="user-avatar-container" >
+            <img class="avatar" src="{{user.profile_image}}" alt="">
+            <p class="username">{{user}}</p>
+        </div>
+    </div>
+</div>
+
+<div class="profile-section-container user-stats-container">
+    <div class="profile-card user-stat">
+        <p class="count">10</p>
+        <p class="description">Templates Descarregados</p>
+    </div>
+    <div class="profile-card user-stat">
+        <p class="count">10</p>
+        <p class="description">Templates Descarregados</p>
+    </div>
+    <div class="profile-card user-stat">
+        <p class="count">10</p>
+        <p class="description">Templates Descarregados</p>
+    </div>
+</div>
+
+<div class="actions profile-section-container">
+    <div class="profile-card">
+        <p class="title">Acções</p>
+        <p class="profile-link"><a href="{% url 'profile_edit' %}">Editar informações do Perfil</a></p>
+        <button class="profile-link" type="button" onclick="document.getElementById('myDialog').showModal()">Encerrar Sessão</button>
+    </div>
+</div>
+
+<form id="logout-form" style="display:none;" action="{% url 'account_logout' %}">
+    {% csrf_token %} 
+</form>
+
+<dialog id="myDialog">
+    <div id="dialog-content" class="dialog-content">
+        <h2 class="title">Tem certeza de que deseja sair??</h2>
+        <footer class="dialog-actions">
+            <button class="btn danger-btn" form="logout-form">Encerrar Sessão</button>
+            <button class="btn good-btn" type="button" onclick="document.getElementById('myDialog').close()">Permanecer</button>
+        </footer>
+    </div>
+</dialog>
+
+
+
+{% endblock content %}
+
+{% block scripts %}
+<script>
+const dialog = document.getElementById('myDialog')
+const dialogContent = document.getElementById('dialog-content')
+
+dialog.onclick = (event) => {
+    console.log("clicked")
+    if (!dialogContent.contains(event.target)) {
+        dialog.close()
+    }
+};
+</script>
+{% endblock scripts %}

@@ -1,6 +1,6 @@
 .profile-hero {
     width: 100%;
-    height: 46rem;
+    height: 24rem;
     background-position: center center;
     background-size: cover;
     border-radius: 0.5rem;
@@ -8,13 +8,19 @@
     place-items: center;
 }
 
-.profile-hero .user-avatar-container {
+.profile-hero .profile-banner {
     height: 50%;
     width: 100%;
     background-color: rgba(255,255,255,0.5);
     display: grid;
     place-content: center;
 
+}
+
+.profile-hero .user-avatar-container {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
 }
 
 .profile-hero .user-avatar-container .avatar {
@@ -25,4 +31,107 @@
 .profile-hero .user-avatar-container .username {
     font-size: 3rem;
     font-weight: 700;
+}
+
+.profile-section-container {
+    margin-top: 2rem;
+    width: 100%;
+    padding: 2rem;
+    background-color: #d1b5e6;
+    border-radius: 0.5rem;
+}
+
+.user-stats-container {
+    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.profile-card {
+    padding: 2rem;
+    background-color: white;
+    border-radius: 0.5rem;
+}
+
+.user-stat .count {
+    line-height: 1.12;
+    font-size: 5rem;
+    font-weight: 800;
+}
+
+.user-stat .description {
+    margin-inline-start: 0.35rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.actions .title {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.actions .profile-link {
+    margin-top: 0.5rem;
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+    color: #59168b;
+    cursor: pointer;
+}
+
+.actions .profile-link:hover, .profile-link:focus {
+    color: #310850;
+}
+
+dialog::backdrop {
+    background-color: rgba(0,0,0,.5);
+}
+
+dialog {
+    inset: 0; 
+    margin: auto;
+    border-radius: 0.5rem;
+}
+
+.dialog-content {
+    padding: 2rem;
+    border-radius: 0.5rem;
+}
+
+.dialog-content .title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.dialog-actions {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: end;
+    gap:1rem;
+}
+
+.btn {
+    padding: 0.65em 1em;
+    border-radius: 0.75rem;
+    cursor: pointer;
+}
+
+.danger-btn {
+    background-color: red;
+    color: white;
+}
+
+.danger-btn:hover {
+    background-color: rgb(160, 1, 1);
+    color: white;
+}
+
+
+.good-btn {
+    background-color: hsl(125, 84%, 40%);
+    color: white;
+}
+
+.good-btn:hover {
+    background-color: hsl(125, 85%, 30%);
+    color: white;
 }
