@@ -1,15 +1,25 @@
 {% extends "shop/base.html" %}
-{% block content %}
 
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'shop/css/list.css' %}">
+{% endblock styles %}
+
+{% block content %}
 <section>
-    <header class="mb-6">
-        <h2 class="text-3xl font-medium">Templates Prontos</h2>
-        <p class="ms-1 text-lg font-ligth text-black/60">Descarrega o site de tua preferencia</p>
+    <header class="shop-hero mb-6" style="background-image:url({% static 'shop/images/web-design.jpg' %});">
+        <div class="hero-card">
+            <h2 class="text-6xl font-medium">Templates Prontos</h2>
+            <p class="mt-4 ms-1 text-lg font-ligth text-black/80">Escolha e baixe o modelo perfeito para o seu projeto</p>
+        </div>
     </header>
+
+
     
     <div class="grid justify-center  sm:grid-cols-2 md:grid-cols-3 gap-4">
         {% for project in project_templates  %}
-        <article class="max-w-sm bg-slate-300 border border-gray-200 rounded-lg shadow-sm ">
+        <article class="bg-slate-300 border border-gray-200 rounded-lg shadow-sm ">
             <img class="w-full aspect-square object-cover rounded-t-lg" src="{{project.image}}" alt="" />
             <div class="p-5">
                 <a href="#">

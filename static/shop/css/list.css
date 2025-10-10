@@ -1,0 +1,30 @@
+.shop-hero {
+    width: 100%;
+    height: 32rem;
+    padding: 1rem;
+    background-position: 10% 0%;
+    background-size: cover;
+    border-radius: 0.5rem;
+    display: grid;
+    place-items: center;
+}
+
+.shop-hero .hero-card {
+    padding: 3rem;
+    border-radius: 0.75rem;
+    backdrop-filter: blur(3px);
+    background-color: rgba(255,255,255,0.85);
+    animation: grow 0.7s ease-out forwards;
+}
+
+@keyframes grow {
+  0% {
+    transform: scaleY(0.01) scaleX(0);
+  }
+  70% {
+    transform: scaleY(0.01) scaleX(1);
+  }
+  100% {
+    transform: scaleY(1); /* altura final */
+  }
+}
