@@ -1,6 +1,6 @@
 from django.urls import path
-from django.http import HttpResponse
+from . import views
 
 urlpatterns = [
-    path('', lambda x: HttpResponse('hola')),
+    path('profile', views.profile_show, name="profile_show"),
 ]

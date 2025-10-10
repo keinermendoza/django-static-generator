@@ -60,7 +60,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = "email" # used by login views and by backend authenticate
 
     REQUIRED_FIELDS = []
-    PATH_TO_DEFAULT_IMAGE = "profile_images/default.png"
+    PATH_TO_DEFAULT_IMAGE = "profile_images/default.jpg"
     objects = CustomUserManager()
 
     def __str__(self):

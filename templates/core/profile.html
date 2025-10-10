@@ -1,0 +1,17 @@
+{% extends "shop/base.html" %}
+{% load static  %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'core/css/profile.css' %}">
+{% endblock styles %}
+
+{% block content %}
+<div class="profile-hero" style="background-image:url({% static 'core/images/ballons.jpg' %});">
+    <div class="user-avatar-container"> 
+        <div>
+            <img class="avatar" src="{{user.profile_image}}" alt="">
+            <p class="username">{{user}}</p>
+        </div>
+    </div>
+</div>
+{% endblock content %}
