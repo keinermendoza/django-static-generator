@@ -3,10 +3,18 @@ from django.http import HttpResponse
 from django.template.loader import render_to_string
 from .models import TemplateGenerator 
 
+from django.contrib.auth.decorators import login_required 
 
+@login_required
 def free_view(request, project_slug):
     project = get_object_or_404(TemplateGenerator, slug=project_slug)
     
+    # up the downloads count for project
+    project.ranking.up_downloads_count()
+
+    # vinculates project to user
+    request.user.projects_liked.add(project)
+
     # get buffer zip buffer
     zip_buffer = project.generate_zip_buffer()
 
