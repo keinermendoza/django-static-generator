@@ -48,9 +48,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     # optionals
     name = models.CharField(max_length=80, blank=True)
     _profile_image = models.ImageField(max_length=300, upload_to=get_profile_image_path, blank=True)
-    projects_liked = models.ManyToManyField(TemplateGenerator, related_name="users", blank=True, null=True)
-    projects_created = models.ManyToManyField(TemplateGenerator, related_name="author", blank=True, null=True)
-
+    
     # required
     username = models.CharField(max_length=80, unique=True)
     email = models.EmailField(max_length=120, unique=True)
@@ -80,3 +78,12 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
             return self._profile_image.url
         return default_storage.url(self.PATH_TO_DEFAULT_IMAGE)
 
+class UserAction(models.Model):
+    user = models.OneToOneField(CustomUser, related_name="actions", on_delete=models.CASCADE)
+    favorite_templates = models.ManyToManyField(TemplateGenerator, related_name="users", blank=True, null=True)
+    downloaded_templates = models.ManyToManyField(TemplateGenerator, related_name="customers", blank=True, null=True)
+    created_templates = models.ManyToManyField(TemplateGenerator, related_name="authors", blank=True, null=True)
+
+
+    def __str__(self):
+        return f"{self.user} actions"

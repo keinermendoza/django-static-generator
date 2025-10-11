@@ -17,16 +17,16 @@
 
 <div class="profile-section-container user-stats-container">
     <div class="profile-card user-stat">
-        <p class="count">10</p>
+        <p class="count">{{user.actions.downloaded_templates.count}}</p>
         <p class="description">Templates Descarregados</p>
     </div>
     <div class="profile-card user-stat">
-        <p class="count">10</p>
-        <p class="description">Templates Descarregados</p>
+        <p class="count">{{user.actions.favorite_templates.count}}</p>
+        <p class="description">Templates Favoritas</p>
     </div>
     <div class="profile-card user-stat">
-        <p class="count">10</p>
-        <p class="description">Templates Descarregados</p>
+        <p class="count">{{user.actions.created_templates.count}}</p>
+        <p class="description">Templates Criadas</p>
     </div>
 </div>
 

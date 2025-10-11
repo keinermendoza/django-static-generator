@@ -13,7 +13,7 @@ def free_view(request, project_slug):
     project.ranking.up_downloads_count()
 
     # vinculates project to user
-    request.user.projects_liked.add(project)
+    request.user.actions.downloaded_templates.add(project)
 
     # get buffer zip buffer
     zip_buffer = project.generate_zip_buffer()
