@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.template.loader import render_to_string
 from .models import TemplateGenerator 
 
+
 def free_view(request, project_slug):
     project = get_object_or_404(TemplateGenerator, slug=project_slug)
     

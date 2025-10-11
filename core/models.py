@@ -8,7 +8,7 @@ from django.contrib.auth.models import (
 )
 
 from django.contrib.auth.models import BaseUserManager
-
+from site_generator.models import TemplateGenerator
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         if not email:
@@ -48,6 +48,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     # optionals
     name = models.CharField(max_length=80, blank=True)
     _profile_image = models.ImageField(max_length=300, upload_to=get_profile_image_path, blank=True)
+    projects_liked = models.ManyToManyField(TemplateGenerator, related_name="users", blank=True, null=True)
+    projects_created = models.ManyToManyField(TemplateGenerator, related_name="author", blank=True, null=True)
 
     # required
     username = models.CharField(max_length=80, unique=True)
@@ -77,3 +79,4 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         if self._profile_image:
             return self._profile_image.url
         return default_storage.url(self.PATH_TO_DEFAULT_IMAGE)
+

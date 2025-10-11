@@ -70,3 +70,14 @@ class TemplateGenerator(models.Model):
         if self.preview_image:
             return self.preview_image.url
         return default_storage.url(self.PATH_TO_DEFAULT_IMAGE)
+    
+class TemplateRanked(models.Model):
+    project = models.OneToOneField(TemplateGenerator, related_name="ranking", on_delete=models.CASCADE)
+    downloads = models.IntegerField(default=0)
+
+    def up_downloads_count(self):
+        self.downloads += 1
+        self.save()
+
+    def __str__(self):
+        return f"{self.project} has {self.downloads} downloads"
