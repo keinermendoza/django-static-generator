@@ -20,13 +20,18 @@ def list_site_pages(request, project_slug):
 
 def preview_site_page(request, project_slug):
     project = get_object_or_404(TemplateGenerator, slug=project_slug)
-    filename = request.GET.get("page-filename")
+    page_filename = request.GET.get("page-filename")
+    if not page_filename:
+        page_filename =  "index.html"
+
+    print("saindo...", page_filename)
     context = {
         "title" : request.GET.get("title"),
         "demo_mode": True,
-        "project": project
+        "project": project,
+        "page_filename": page_filename
     }
     
-    if filename in project.template_names:
-        return render(request, project.get_template_path(filename), context) 
+    if page_filename in project.template_names:
+        return render(request, project.get_template_path(page_filename), context) 
     return HttpResponse(404)

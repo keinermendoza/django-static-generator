@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: sans-serif;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+button {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+}
+ul {
+    list-style: none;
+}
+
+/* dialog */
+
+dialog::backdrop {
+    background-color: rgba(0,0,0,.5);
+}
+
+dialog {
+    inset: 0; 
+    margin: auto;
+    border-radius: 0.5rem;
+}
+
+.dialog-content {
+    padding: 2rem;
+    border-radius: 0.5rem;
+}
+
+.dialog-content .title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.dialog-actions {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: end;
+    gap:1rem;
+}
+
+/* butons */
+.btn {
+    padding: 0.65em 1em;
+    border-radius: 0.75rem;
+    cursor: pointer;
+}
+
+.danger-btn {
+    background-color: red;
+    color: white;
+}
+
+.danger-btn:hover {
+    background-color: rgb(160, 1, 1);
+    color: white;
+}
+
+
+.good-btn {
+    background-color: hsl(125, 84%, 40%);
+    color: white;
+}
+
+.good-btn:hover {
+    background-color: hsl(125, 85%, 30%);
+    color: white;
+}

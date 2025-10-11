@@ -1,14 +1,92 @@
-{% extends "shop/base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" description="keiner mendoza" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{project.title}}</title>
 
-{% block content %}
-<h1>You have chosen this site for preview</h1>
-    {% for template in project.template_names %}
+    <meta name="title" content="{{project.project_name}}">
+    <meta name="description" content="{{project.description}}"> 
+    <meta property="og:title" content="{{project.project_name}}">
+    <meta property="og:description" content="{{project.description}}">
+    <meta property="og:site_name" content="keiner-mendoza-web-developer">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}">
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{project.image}}">
+
     
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ request.scheme }}://{{ request.get_host }}">
+    <meta property="twitter:title" content="{{project.project_name}}.">
+    <meta property="twitter:description" content="{{project.description}}">
+    <meta property="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{project.image}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'icons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'icons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'icons/favicon-16x16.png' %}">
+    <link rel="icon" href="{% static 'icons/favicon.ico' %}" type="image/x-icon" />
+    <link rel="manifest" href="{% static 'icons/site.webmanifest' %}">
+    
+    <link rel="stylesheet" href="{% static 'core/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'shop/css/preview.css' %}">
+</head>
+<body>
+    <header class="preview-bar-container">
+        <nav class="preview-bar">
+            <ul class="list-link">
+                <li class="preview-bar__link">
+                    <a href="/">Sair da Preview</a>
+                </li>
+                {% if request.user.is_authenticated %}
+                <li class="preview-bar__link">
+                    <a href="{% url 'free' project.slug %}">Baixar Projeto</a>
+                </li>
+                {% else %}
+                <button class="preview-bar__link" type="button" onclick="document.getElementById('myDialog').showModal()">Baixar Projeto</button>
+                {% endif %}
+            </ul>
+            <p> 
+                <span>Template criada por </span>
+                <a target="_blank" referrerpolicy="no-referrer" rel="nofollow" href="{{project.author_link}}">{{project.author_name}}</a>
+            </p>
+        </nav>
+    </header>
+
+    <dialog id="myDialog">
+        <div id="dialog-content" class="dialog-content">
+            <h2 class="title">Iniciar Sessão</h2>
+            <p>Para descarregar este projeto primeiro é necesario voce <a class="dialog-content__link" href="{% url 'account_login' %}">iniciar sessão.</a></p> 
+            <p>Se não tiver conta voce pode <a class="dialog-content__link" href="{% url 'account_signup' %}">criar uma conta de graça.</a></p>
+            
+            <footer class="dialog-actions">
+                <button class="btn danger-btn" type="button" onclick="document.getElementById('myDialog').close()">Continuar navegando</button>
+                <a href="{% url 'account_login' %}" class="btn good-btn">Iniciar Sessão</a>
+            </footer>
+        </div>
+    </dialog>
+
+
     <iframe 
-        src="{% url 'preview' project.slug %}?page-filename={{template}}" 
+        src="{% url 'preview' project.slug %}?page-filename={{page_filename}}" 
         width="100%"
-        height="400"
-        style="border: 1px solid #ccc;"
+        height="auto"
         frameborder="0"></iframe>
-    {% endfor %}
-{% endblock content %}
+
+    <script>
+    const dialog = document.getElementById('myDialog')
+    const dialogContent = document.getElementById('dialog-content')
+
+    dialog.onclick = (event) => {
+        console.log("clicked")
+        if (!dialogContent.contains(event.target)) {
+            dialog.close()
+        }
+    };
+    </script>
+</body>
+</html>

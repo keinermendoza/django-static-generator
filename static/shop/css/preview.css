@@ -1,0 +1,51 @@
+/* navbar */
+.preview-bar-container {
+    background-color: blueviolet;
+    padding: 1rem 1.25rem;
+    color: white;
+}
+
+.preview-bar {
+    margin-inline: auto;
+    max-width: 96rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.preview-bar .list-link {
+    display: flex;
+    gap: 1rem;
+}
+
+.dialog-content p {
+    margin-top: 0.65rem;
+}
+
+.dialog-content__link,
+.preview-bar__link {
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+    transition: color 0.25s;
+}
+
+.preview-bar__link:hover {
+    color: gold;
+    transform-origin: left;
+}
+
+.dialog-content__link:hover {
+    color: blueviolet;
+    transform-origin: left;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+iframe {
+    flex-grow: 1;
+}
