@@ -1,5 +1,8 @@
 {% extends "generator/basic_ong/base.html" %}
+{% load generator_links %}
 
 {% block content %}
 <h1>Wellcome page</h1>
+
+<img src="{% generator_link 'community.jpg' type='img' %}" alt="">
 {% endblock content %}

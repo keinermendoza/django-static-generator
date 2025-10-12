@@ -12,7 +12,7 @@ def generator_link(context, asset, type: str):
     Args:
         context (dict): The template context, must include 'project' and may contain 'demo_mode'.
         asset (str): The resource file name.
-        type (str): Resource type, must be 'html', 'css', or 'js'.
+        type (str): Resource type, must be 'html', 'css', 'js', or 'img'.
 
     Returns:
         str: Generated URL for the given resource.
@@ -20,9 +20,9 @@ def generator_link(context, asset, type: str):
     Raises:
         template.TemplateSyntaxError: If the type is invalid or project is not a TemplateGenerator instance.
     """
-    if type not in ["html", "css", "js"]:
+    if type not in ["html", "css", "js", "img"]:
         raise template.TemplateSyntaxError(
-            "tag 'generator_link' must by of type 'html' | 'css' | 'js'."
+            "tag 'generator_link' must by of type 'html' | 'css' | 'js' | 'img'."
         )
     
     project = context.get("project", None)
@@ -37,13 +37,13 @@ def generator_link(context, asset, type: str):
         match type:
             case 'html':
                 link =  reverse_lazy('preview', args=[project.slug]) + '?page-filename=' + asset
-            case 'css' | 'js':
+            case 'css' | 'js' | 'img':
                 link = static(f"generator/{project.project_name}/{type}/{asset}")
     else:
         match type:
             case 'html':
                 link =  "/" + asset
-            case 'css' | 'js':
+            case 'css' | 'js' | 'img':
                 link = f"./{type}/{asset}"
         
     return link

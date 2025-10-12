@@ -12,6 +12,7 @@ class TemplateGenerator(models.Model):
     template_names = models.JSONField(default=list, blank=True)
     css_files = models.JSONField(default=list, blank=True)
     js_files = models.JSONField(default=list, blank=True)
+    img_files = models.JSONField(default=list, blank=True)
 
     preview_image = models.ImageField(upload_to='projects/preview', blank=True)
     description = models.TextField(blank=True)
@@ -30,6 +31,9 @@ class TemplateGenerator(models.Model):
 
     def get_js_path(self, filename):
         return settings.BASE_DIR / "static" / "generator" / self.project_name  / "js" / filename
+
+    def get_img_path(self, filename):
+        return settings.BASE_DIR / "static" / "generator" / self.project_name  / "img" / filename
 
     def generate_zip_buffer(self, context=None):
         if context is None:
@@ -55,6 +59,12 @@ class TemplateGenerator(models.Model):
                     with open(path, 'rb') as f:
                         content = f.read()
                         zip.writestr("js/" + js_filename, content)
+            
+            # add images
+            for image_filename in self.img_files:
+                if path := finders.find(self.get_img_path(image_filename)):
+                    with open(path, 'rb') as f:
+                        zip.writestr(f"img/{image_filename}", f.read())
 
         zip_buffer.seek(0)
         return zip_buffer
