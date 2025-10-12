@@ -53,7 +53,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=120, unique=True)
     is_admin = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
 
     USERNAME_FIELD = "email" # used by login views and by backend authenticate
@@ -79,9 +79,9 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
 class UserAction(models.Model):
     user = models.OneToOneField(CustomUser, related_name="actions", on_delete=models.CASCADE)
-    favorite_templates = models.ManyToManyField(TemplateGenerator, related_name="users", blank=True, null=True)
-    downloaded_templates = models.ManyToManyField(TemplateGenerator, related_name="customers", blank=True, null=True)
-    created_templates = models.ManyToManyField(TemplateGenerator, related_name="authors", blank=True, null=True)
+    favorite_templates = models.ManyToManyField(TemplateGenerator, related_name="users", blank=True)
+    downloaded_templates = models.ManyToManyField(TemplateGenerator, related_name="customers", blank=True)
+    created_templates = models.ManyToManyField(TemplateGenerator, related_name="authors", blank=True)
 
 
     def __str__(self):

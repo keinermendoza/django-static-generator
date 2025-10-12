@@ -154,11 +154,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'core.CustomUser'
 
 # allauth config
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_LOGIN_METHODS = {'email'}
+ACCOUNT_ORIGIN_METHOD = {'email'}
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
-ACCOUNT_EMAIL_VERIFICATION = 'optional'  # puede ser 'none', 'optional' o 'mandatory'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # puede ser 'none', 'optional' o 'mandatory'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
@@ -176,16 +176,14 @@ ACCOUNT_FORMS = {
 }
 
 # Email
-EMAIL_BACKEND = environ.get('EMAIL_BACKEND')
-USE_EMAIL = bool(int(environ.get('USE_EMAIL', 0)))
-if USE_EMAIL:
-    EMAIL_HOST = environ.get('EMAIL_HOST')
-    EMAIL_HOST_USER = environ.get('EMAIL_HOST_USER')
-    EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD')
-    EMAIL_PORT = int(environ.get('EMAIL_PORT', 0))
-    EMAIL_USE_TLS = bool(int(environ.get('EMAIL_USE_TLS', 0)))
+# EMAIL_BACKEND = environ.get('EMAIL_BACKEND')
+EMAIL_HOST = environ.get('EMAIL_HOST')
+EMAIL_HOST_USER = environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = int(environ.get('EMAIL_PORT', 0))
+EMAIL_USE_TLS = bool(int(environ.get('EMAIL_USE_TLS', 0)))
 
-    SERVER_EMAIL =  environ.get('EMAIL_OWNER')  # Correo que aparecerá como remitente
-    ADMINS = [('Admin',  environ.get('EMAIL_OWNER'))]  # Correo al que se enviarán los errores
+SERVER_EMAIL =  environ.get('EMAIL_OWNER')  # Correo que aparecerá como remitente
+ADMINS = [('Admin',  environ.get('EMAIL_OWNER'))]  # Correo al que se enviarán los errores
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
