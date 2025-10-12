@@ -50,7 +50,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     _profile_image = models.ImageField(max_length=300, upload_to=get_profile_image_path, blank=True)
     
     # required
-    username = models.CharField(max_length=80, unique=True)
     email = models.EmailField(max_length=120, unique=True)
     is_admin = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
