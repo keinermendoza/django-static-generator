@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import TemplateGenerator
-
+from django import forms
+from .models import TemplateGenerator, TemplateRanked
 @admin.register(TemplateGenerator)
 class TemplateGeneratorAdmin(admin.ModelAdmin):
     list_display = ['project_name']
@@ -8,3 +8,5 @@ class TemplateGeneratorAdmin(admin.ModelAdmin):
     prepopulated_fields = {
         'slug': ('project_name',)
     }
+
+admin.site.register(TemplateRanked)
