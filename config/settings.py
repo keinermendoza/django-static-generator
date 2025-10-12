@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.github',
     'core',
     'mywidgets',
     'mytemplatetags',
@@ -174,6 +177,34 @@ ACCOUNT_FORMS = {
     'signup': 'core.forms.CustomSignupForm',
     'user_token': 'allauth.account.forms.UserTokenForm',
 }
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id':environ.get('GOOGLE_CLIENT_ID'),
+            'secret':environ.get('GOOGLE_SECRET'),
+        },
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'METHOD': 'oauth2',
+        'VERIFIED_EMAIL':True,
+    },
+    'github': {
+        'APP': {
+            'client_id':environ.get('GITHUB_CLIENT_ID'),
+            'secret':environ.get('GITHUB_SECRET'),
+        },
+        'SCOPE': [
+            'user',
+        ]
+    }
+}
+
 
 # Email
 # EMAIL_BACKEND = environ.get('EMAIL_BACKEND')
