@@ -9,9 +9,9 @@ from django.urls import reverse
 
 class TemplateGenerator(models.Model):
     project_name = models.CharField(max_length=80)
-    template_names = models.JSONField(default=list)
-    css_files = models.JSONField(default=list)
-    js_files = models.JSONField(default=list)
+    template_names = models.JSONField(default=list, blank=True)
+    css_files = models.JSONField(default=list, blank=True)
+    js_files = models.JSONField(default=list, blank=True)
 
     preview_image = models.ImageField(upload_to='projects/preview', blank=True)
     description = models.TextField(blank=True)
