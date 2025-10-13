@@ -157,6 +157,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'core.CustomUser'
 
 # allauth config
+
+ACCOUNT_ADAPTER = "core.adapters.MyAccountAdapter"
+SOCIALACCOUNT_ADAPTER = "core.adapters.MySocialAccountAdapter"
+
 ACCOUNT_LOGIN_METHODS = {'email'}
 ACCOUNT_ORIGIN_METHOD = {'email'}
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
