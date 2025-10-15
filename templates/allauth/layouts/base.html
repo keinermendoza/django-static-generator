@@ -1,4 +1,4 @@
-{% load static i18n %}
+{% load static i18n message_filters %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,6 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <link rel="stylesheet" href="{% static 'allauth/css/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'core/css/sweetalert.min.css' %}">
+
         <title>
             {% block head_title %}
             {% endblock head_title %}
@@ -17,12 +19,7 @@
     <body>
         {% block body %}
             {% if messages %}
-                <div>
-                    <strong>{% trans "Messages:" %}</strong>
-                    <ul>
-                        {% for message in messages %}<li>{{ message }}</li>{% endfor %}
-                    </ul>
-                </div>
+                {{ messages|to_json|json_script:"django-messages" }}
             {% endif %}
             <main>
             {% block content %}
@@ -31,6 +28,10 @@
 
         {% endblock body %}
         {% block extra_body %}
-        {% endblock extra_body %}    
+        {% endblock extra_body %}   
+
+        <script src="{% static 'core/js/sweetalert.all.min.js' %}"></script>
+        <script src="{% static 'core/js/messages.js' %}"></script>
+
     </body>
 </html>
