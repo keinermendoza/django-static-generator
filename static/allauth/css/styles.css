@@ -37,6 +37,12 @@ h1 {
     margin-bottom: 0.75rem;
 }
 
+h2 {
+    font-size: 1.25rem;
+    text-align: center;
+    margin-block: 0.5rem;
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -121,3 +127,84 @@ form button:hover {
 .custom-password-input-container:has(input[type=text]) button svg.pasword-showed {
     display: none;
 } */
+
+ 
+
+
+ul:has(li a[title=GitHub]),
+l:has(li a[title=Google]) {
+    list-style: none;
+}
+
+a[title=GitHub],
+a[title=Google]
+{
+    color: transparent;
+    position: relative;
+    text-align: center;
+    display: block;
+    margin-top: 0.75rem;
+    border-radius: 0.45rem;
+    padding: 0.3rem 1rem;
+    width: 100%;
+    outline: black solid 1px;
+    border: solid black 5px;
+}
+
+a[title=GitHub] {
+    background-color: black;
+}
+
+a[title=GitHub]:hover {
+    background-color: rgba(0,0,0,.85);
+    border: solid 5px rgba(0,0,0,.85);
+}
+
+a[title=Google] {
+    outline: red solid 1px;
+    border-color:white;
+    background-color: white;
+}
+
+a[title=GitHub]::before,
+a[title=Google]::before,
+a[title=GitHub]::after,
+a[title=Google]::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    inset: 0;
+    margin: auto;
+    display: grid;
+    place-content: center;
+}
+
+a[title=GitHub]::before,
+a[title=Google]::before {
+    transform: translateX(-2rem);
+}
+
+a[title=GitHub]::after,
+a[title=Google]::after {
+    transform: translateX(1rem);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+a[title=GitHub]::after {
+    content: "Github";
+    color: white;
+}
+
+a[title=Google]::after {
+    content: "Google";
+    color: red;
+}
+
+a[title=GitHub]::before {
+    background: url('/static/icons/github.svg') no-repeat center / contain;
+
+}
+a[title=Google]::before {
+    background: url('/static/icons/google.svg') no-repeat center / contain;
+}
