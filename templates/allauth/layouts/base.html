@@ -17,6 +17,12 @@
         {% endblock extra_head %}
     </head>
     <body>
+        
+        <a class="link-go-home" href="{% url 'home' %}">
+            <img class="icon" src="{% static 'icons/apple-touch-icon.png' %}" alt="Your Company">
+            <span>Ir para Home</span>
+        </a>
+
         {% block body %}
             {% if messages %}
                 {{ messages|to_json|json_script:"django-messages" }}

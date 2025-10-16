@@ -5,6 +5,8 @@
 }
 :root {
     --clr--slate-300: oklch(92.9% 0.013 255.508);
+    --clr--slate-400: oklch(0.869 0.022 252.894);
+
     --clr--slate-950: oklch(12.9% 0.042 264.695);
     --clr--slate-900: oklch(20.8% 0.042 265.755);
     --clr--blue-300: oklch(80.9% 0.105 251.813);
@@ -128,8 +130,31 @@ form button:hover {
     display: none;
 } */
 
- 
+.link-go-home {
+    text-decoration: none;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background-color: var(--clr--slate-300);
+    border-radius: 0.5rem;
+    color: var(--clr--slate-950);
 
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    transition: 0.25s ease-in background-color;
+}
+
+.link-go-home:hover {
+    background-color: var(--clr--slate-400);
+}
+
+.link-go-home .icon {
+
+
+    width: 3.25rem;
+    aspect-ratio: 1;
+    border-radius: 100%;
+}
 
 ul:has(li a[title=GitHub]),
 l:has(li a[title=Google]) {
@@ -151,13 +176,10 @@ a[title=Google]
     border: solid black 5px;
 }
 
-a[title=GitHub] {
+a[title=GitHub],
+a[title=GitHub]:hover
+ {
     background-color: black;
-}
-
-a[title=GitHub]:hover {
-    background-color: rgba(0,0,0,.85);
-    border: solid 5px rgba(0,0,0,.85);
 }
 
 a[title=Google] {
