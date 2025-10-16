@@ -4,7 +4,7 @@ from io import BytesIO
 import zipfile
 from django.template.loader import render_to_string
 from django.contrib.staticfiles import finders
-from django.core.files.storage import default_storage
+from django.templatetags.static import static
 from django.urls import reverse
 
 class TemplateGenerator(models.Model):
@@ -18,7 +18,7 @@ class TemplateGenerator(models.Model):
     description = models.TextField(blank=True)
     slug = models.SlugField(max_length=80, unique=True)
 
-    PATH_TO_DEFAULT_IMAGE = "projects/preview/default.png"
+    PATH_TO_DEFAULT_IMAGE = "shop/images/generic-site.webp"
 
     def get_template_path(self, template_name):
         return settings.BASE_DIR / "templates" / "generator" / self.project_name  / template_name 
@@ -79,7 +79,7 @@ class TemplateGenerator(models.Model):
     def image(self):
         if self.preview_image:
             return self.preview_image.url
-        return default_storage.url(self.PATH_TO_DEFAULT_IMAGE)
+        return static(self.PATH_TO_DEFAULT_IMAGE)
     
 class TemplateRanked(models.Model):
     project = models.OneToOneField(TemplateGenerator, related_name="ranking", on_delete=models.CASCADE)

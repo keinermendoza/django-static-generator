@@ -10,70 +10,42 @@
 <section>
     <header class="shop-hero mb-6" style="background-image:url({% static 'shop/images/web-design.jpg' %});">
         <div class="hero-card">
-            <h2 class="text-6xl font-medium">Templates Prontos</h2>
+            <h2 class="text-3xl md:text-6xl font-medium">Templates Prontos</h2>
             <p class="mt-4 ms-1 text-lg font-ligth text-black/80">Escolha e baixe o modelo perfeito para o seu projeto</p>
         </div>
     </header>
 
 
     
-    <div class="grid justify-center  sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <div class="grid justify-center grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {% for project in project_templates  %}
-        <article class="bg-slate-300 border border-gray-200 rounded-lg shadow-sm ">
-            <img class="w-full aspect-square object-cover rounded-t-lg" src="{{project.image}}" alt="" />
-            <div class="p-5">
+        <article class="flex flex-col bg-slate-300 border border-gray-200 rounded-lg shadow-sm ">
+            <img class="h-1/2 w-full object-cover rounded-t-lg" src="{{project.image}}" alt="" />
+            <div class="p-5 flex-grow flex flex-col">
                 <a href="#">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">{{project.project_name}}</h5>
                 </a>
-                <p class="mb-3 font-normal text-gray-700 ">{{project.description}}</p>
-                <p>Downloads {{project.ranking.downloads}}</p>
-                <a href="{{project.get_absolute_url}}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Usar Template
-                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                <p class="hidden sm:block mb-2 font-normal text-gray-700 ">{{project.description}}</p>
+                
+                <div class="mb-2 flex w-fit gap-1 items-center bg-green-100 text-green-800 text-sm font-medium  px-2.5 py-0.5 rounded-sm dark:bg-green-900 dark:text-green-300">
+                    <svg class="size-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
                     </svg>
-                </a>
+                    <p>{{project.ranking.downloads}} <span class="hidden sm:inline">Descargas</span></p>
+                </div>
+
+                <footer class="mt-4 flex-grow content-end">
+                    <a href="{{project.get_absolute_url}}" class="ms-auto w-full sm:w-fit flex justify-between items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        Usar
+                        <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                        </svg>
+                    </a>
+                </footer>
+
             </div>
         </article>
-        
         {% endfor %}
-
-        <!-- temporal -->
-        <article class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-            <a href="#">
-                <img class="rounded-t-lg" src="{{project.image}}" alt="" />
-            </a>
-            <div class="p-5">
-                <a href="#">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{project.project_name}}</h5>
-                </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Read more
-                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                    </svg>
-                </a>
-            </div>
-        </article>
-
-        <article class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-            <a href="#">
-                <img class="rounded-t-lg" src="{{project.image}}" alt="" />
-            </a>
-            <div class="p-5">
-                <a href="#">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{project.project_name}}</h5>
-                </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Read more
-                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                    </svg>
-                </a>
-            </div>
-        </article>
     </div>
 
 

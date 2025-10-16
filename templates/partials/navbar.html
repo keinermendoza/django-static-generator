@@ -44,23 +44,24 @@
     <div class="relative flex h-16 items-center justify-between">
  
       <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-        <div class="flex shrink-0 items-center">
-          <img class="h-10 w-auto" src="{% static 'icons/apple-touch-icon.png' %}" alt="Your Company">
-        </div>
-        <div class="hidden sm:ml-6 sm:block">
-          <div class="flex space-x-4">
-            <!-- Current: "bg-gray-900 ", Default: "text-gray-300 hover:bg-cyan-700 hover:" -->
-            <a href="{{home_path}}" class="text-white rounded-md {% if request.path == home_path %}bg-cyan-900 {% else %}hover:bg-cyan-700 {% endif %} px-3 py-2 text-sm font-medium" 
-                aria-current="page">Inicio</a>
+          <figure class="overflow-hidden rounded-full grid place-center bg-white p-1">
+            <img class="h-10 w-auto" src="{% static 'icons/apple-touch-icon.png' %}" alt="Your Company">
+          </figure>
 
-            {% if request.user.is_authenticated %}
-            {% comment %} <a href="{{profile_path}}" class="text-white rounded-md {% if request.path == profile_path %}bg-cyan-900 {% else %}hover:bg-cyan-700 {% endif %} px-3 py-2 text-sm font-medium">Perfil</a> {% endcomment %}
-            {% else %}
-            <a href="{{login_path}}" class="text-white rounded-md {% if request.path == login_path %}bg-cyan-900 {% else %}hover:bg-cyan-700 {% endif %} px-3 py-2 text-sm font-medium">Iniciar Sesion</a>
-            <a href="{{register_path}}" class="text-white rounded-md {% if request.path == register_path %}bg-cyan-900 {% else %}hover:bg-cyan-700 {% endif %} px-3 py-2 text-sm font-medium">Crear Cuenta</a>
-            {% endif %}
+          <div class="hidden sm:ml-6 sm:flex items-center ">
+            <div class="space-x-4">
+              <!-- Current: "bg-gray-900 ", Default: "text-gray-300 hover:bg-cyan-700 hover:" -->
+              <a href="{{home_path}}" class="text-white rounded-md {% if request.path == home_path %}bg-cyan-900 {% else %}hover:bg-cyan-700 {% endif %} px-3 py-2 text-sm font-medium" 
+                  aria-current="page">Inicio</a>
+
+              {% if request.user.is_authenticated %}
+              {% comment %} <a href="{{profile_path}}" class="text-white rounded-md {% if request.path == profile_path %}bg-cyan-900 {% else %}hover:bg-cyan-700 {% endif %} px-3 py-2 text-sm font-medium">Perfil</a> {% endcomment %}
+              {% else %}
+              <a href="{{login_path}}" class="text-white rounded-md {% if request.path == login_path %}bg-cyan-900 {% else %}hover:bg-cyan-700 {% endif %} px-3 py-2 text-sm font-medium">Iniciar Sesion</a>
+              <a href="{{register_path}}" class="text-white rounded-md {% if request.path == register_path %}bg-cyan-900 {% else %}hover:bg-cyan-700 {% endif %} px-3 py-2 text-sm font-medium">Crear Cuenta</a>
+              {% endif %}
+            </div>
           </div>
-        </div>
       </div>
 
       {% if request.user.is_authenticated %}
