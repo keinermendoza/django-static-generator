@@ -108,27 +108,11 @@ form button:hover {
     gap: 0.5rem;
 }
 
-/* .custom-password-input-container svg.pasword-hidden,
-.custom-password-input-container svg.pasword-showed
- {
-} */
-
-.custom-password-input-container:has(input[type=password]) button svg.pasword-hidden {
-    display: block;
-    width: 0.5rem;
+.custom-password-input-container svg
+{
+    width: 1rem;
 }
 
-.custom-password-input-container:has(input[type=password]) button svg.pasword-showed {
-    display: none;
-}
-
-/* .custom-password-input-container:has(input[type=text]) button svg.pasword-hidden {
-    display: none;
-}
-
-.custom-password-input-container:has(input[type=text]) button svg.pasword-showed {
-    display: none;
-} */
 
 .link-go-home {
     text-decoration: none;
