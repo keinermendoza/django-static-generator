@@ -5,39 +5,11 @@
 <head>
     <title>Keiner Mendoza - {% block title %}{% endblock title %}</title>
 
-    <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
-    <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}">
-    <meta name="title" content="App de audios personalizada por Keiner Mendoza. Desarrollador Web">
-    <meta name="description" content="Escucha audios libres de copyright ideales para tus creaciones"> 
-    <meta property="og:title" content="App de audios personalizada por Keiner Mendoza. Desarrollador Web">
-    <meta property="og:description" content="Escucha audios libres de copyright ideales para tus creaciones">
-    <meta property="og:site_name" content="keiner-mendoza-web-developer">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}">
-    <meta charset="UTF-8">
-    <meta name="author" description="keiner mendoza" >
-    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'audios/images/audios-app-preview.png' %}">
-
-    
-    <meta name="twitter:title" content="Escucha audios libres de copyright ideales para tus creaciones">
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="{{ request.scheme }}://{{ request.get_host }}">
-    <meta property="twitter:title" content="App de audios personalizada por Keiner Mendoza. Desarrollador Web.">
-    <meta property="twitter:description" content="Escucha audios libres de copyright ideales para tus creaciones">
-    <meta property="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'audios/images/audios-app-preview.png' %}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-   
-
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'icons/apple-touch-icon.png' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'icons/favicon-32x32.png' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'icons/favicon-16x16.png' %}">
-    <link rel="icon" href="{% static 'icons/favicon.ico' %}" type="image/x-icon" />
-    <link rel="manifest" href="{% static 'icons/site.webmanifest' %}">
-
+    {% include "partials/meta.html" %}
     {% block meta %}{% endblock meta %}
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="{% static 'core/css/sweetalert.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/mobile.css' %}">
     
     {% block styles %}{% endblock styles %}
 </head>
@@ -48,7 +20,7 @@
     {% include "partials/navbar.html" %}
     <main class="mb-20 mb:mb-0 mx-auto min-h-screen max-w-7xl py-4 px-2 sm:p-6 lg:p-8">{% block content %}{% endblock content %}</main>
 
-    {% include "partials/mobile_navbar.html" %}
+    {% include "partials/mobile.html" %}
     <script src="{% static 'core/js/sweetalert.all.min.js' %}"></script>
     <script src="{% static 'core/js/messages.js' %}"></script>
 

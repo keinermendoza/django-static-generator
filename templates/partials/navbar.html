@@ -50,15 +50,15 @@
 
           <div class="hidden sm:ml-6 sm:flex items-center ">
             <div class="space-x-4">
-              <!-- Current: "bg-gray-900 ", Default: "text-gray-300 hover:bg-cyan-700 hover:" -->
-              <a href="{{home_path}}" class="text-white rounded-md {% if request.path == home_path %}bg-cyan-900 {% else %}hover:bg-cyan-700 {% endif %} px-3 py-2 text-sm font-medium" 
-                  aria-current="page">Inicio</a>
+
+              <a href="{{home_path}}" class="text-white rounded-md {% if request.path == login_path %}bg-cyan-600 {% else %}hover:bg-cyan-400 {% endif %} px-3 py-2 text-sm font-medium"  aria-current="page">Home</a>
 
               {% if request.user.is_authenticated %}
               {% comment %} <a href="{{profile_path}}" class="text-white rounded-md {% if request.path == profile_path %}bg-cyan-900 {% else %}hover:bg-cyan-700 {% endif %} px-3 py-2 text-sm font-medium">Perfil</a> {% endcomment %}
               {% else %}
-              <a href="{{login_path}}" class="text-white rounded-md {% if request.path == login_path %}bg-cyan-900 {% else %}hover:bg-cyan-700 {% endif %} px-3 py-2 text-sm font-medium">Iniciar Sesion</a>
-              <a href="{{register_path}}" class="text-white rounded-md {% if request.path == register_path %}bg-cyan-900 {% else %}hover:bg-cyan-700 {% endif %} px-3 py-2 text-sm font-medium">Crear Cuenta</a>
+              <a href="{{login_path}}" class="text-white rounded-md {% if request.path == login_path %}bg-cyan-600 {% else %}hover:bg-cyan-400 {% endif %} px-3 py-2 text-sm font-medium">Entrar</a>
+              <a href="{{register_path}}" class="text-white rounded-md {% if request.path == register_path %}bg-cyan-600 {% else %}hover:bg-cyan-400 {% endif %} px-3 py-2 text-sm font-medium">Cadastrar</a>
+              
               {% endif %}
             </div>
           </div>
@@ -76,17 +76,6 @@
               <img class="size-8 rounded-full" src="{{request.user.profile_image}}" alt="Imagen de Perfil">
             </a>
           </div>
-
-          <!--
-            Dropdown menu, show/hide based on menu state.
-
-            Entering: "transition ease-out duration-100"
-              From: "transform opacity-0 scale-95"
-              To: "transform opacity-100 scale-100"
-            Leaving: "transition ease-in duration-75"
-              From: "transform opacity-100 scale-100"
-              To: "transform opacity-0 scale-95"
-          -->
           
         </div>
       </div>

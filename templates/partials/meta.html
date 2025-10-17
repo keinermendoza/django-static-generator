@@ -1,0 +1,40 @@
+{% load static %}
+
+{% with meta_description="Baixe templates prontos para sites modernos. Encontre o modelo ideal para o seu projeto e comece a criar hoje mesmo." %}
+{% with meta_title="Template Shop" %}
+
+<meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}">
+<meta name="title" content="{{meta_title}}">
+<meta name="description" content="{{meta_description}}"> 
+<meta property="og:title" content="{{meta_title}}">
+<meta property="og:description" content="{{meta_description}}">
+<meta property="og:site_name" content="keiner-mendoza-web-developer">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}">
+<meta charset="UTF-8">
+<meta name="author" description="keiner mendoza" >
+<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'audios/images/audios-app-preview.png' %}">
+
+
+<meta name="twitter:title" content="{{meta_description}}">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="{{ request.scheme }}://{{ request.get_host }}">
+<meta property="twitter:title" content="{{meta_title}}">
+<meta property="twitter:description" content="{{meta_description}}">
+<meta property="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'audios/images/audios-app-preview.png' %}">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta property="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'audios/images/audios-app-preview.png' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="apple-touch-icon" sizes="180x180" href="{% static 'icons/apple-touch-icon.png' %}">
+<link rel="icon" type="image/png" sizes="32x32" href="{% static 'icons/favicon-32x32.png' %}">
+<link rel="icon" type="image/png" sizes="16x16" href="{% static 'icons/favicon-16x16.png' %}">
+<link rel="icon" href="{% static 'icons/favicon.ico' %}" type="image/x-icon" />
+<link rel="manifest" href="{% static 'icons/site.webmanifest' %}">
+
+{% endwith %}
+{% endwith %}

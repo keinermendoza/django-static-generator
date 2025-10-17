@@ -1,20 +1,22 @@
 {% load static i18n message_filters %}
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
     <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <link rel="stylesheet" href="{% static 'allauth/css/styles.css' %}">
-        <link rel="stylesheet" href="{% static 'core/css/sweetalert.min.css' %}">
+    <title>Keiner Mendoza - {% block title %}{% endblock title %}</title>
 
-        <title>
-            {% block head_title %}
-            {% endblock head_title %}
-        </title>
-        {% block extra_head %}
-        {{ form.media }}
-        {% endblock extra_head %}
+    {% include "partials/meta.html" %}
+    
+    <link rel="stylesheet" href="{% static 'core/css/mobile.css' %}">
+    <link rel="stylesheet" href="{% static 'allauth/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/sweetalert.min.css' %}">
+
+    <title>
+        {% block head_title %}
+        {% endblock head_title %}
+    </title>
+    {% block extra_head %}
+    {{ form.media }}
+    {% endblock extra_head %}
     </head>
     <body>
         
@@ -27,10 +29,12 @@
             {% if messages %}
                 {{ messages|to_json|json_script:"django-messages" }}
             {% endif %}
-            <main>
+            <main >
             {% block content %}
             {% endblock content %}
             </main>
+            
+            {% include "partials/mobile.html" %}
 
         {% endblock body %}
         {% block extra_body %}
